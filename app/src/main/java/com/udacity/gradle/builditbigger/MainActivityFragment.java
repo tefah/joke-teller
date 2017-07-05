@@ -5,7 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.Joke;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -31,6 +35,13 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+        Button tellJoke = (Button) root.findViewById(R.id.tellJokeButton);
+        tellJoke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), Joke.getJoke(), Toast.LENGTH_SHORT).show();
+            }
+        });
         return root;
     }
 }
